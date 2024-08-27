@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Encriptador</title>
+        <link rel="stylesheet" href="StyleEncriptar.css">   
+    </head>
+
+<body class="Body">
+    <header>
+        <img src="./Imagenes/Logo_Alura.png" alt="Logo Alura" class="logo_alura">
+    </header>
+    <main class="main">
+        <section>
+            <textarea class="text-area" cols="30" rows="10" placeholder="Ingrese el texto aquí"></textarea>
+            <div>
+                <h6 class="informacion">Solo letras minúsculas sin acentos</h6>
+            </div>
+            <div class="botones">
+                    <button class="boton_encriptar" onclick="btnEncriptar()">Encriptar</button>
+                    <button class="boton_desencriptar" onclick="btnDesencriptar()">Desencriptar</button>
+            </div>
+        </section>
+        <section>
+            <textarea id="miMensaje" class="text-mensaje" cols="20" rows="10"></textarea>
+            <div class="boton-copiar">
+                <button>
+                    <button class="boton_copiar" onclick="copiar()">Copiar</button>
+                 </button>
+            </div>
+        </section>
+    </main>
+    <script src="./Script.js"></script>
+</body>
+<footer>
+    <p>&copy; <span id="year"></span> - Noe Leram</p>
+    <p>Todos los derechos reservados</p>
+    <p>Contacto: NoeLeram@hotmail69.com</p>
+</footer>
+<script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+</script>
+</html>

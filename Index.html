@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bienvenida Challenger</title>
+    <style>
+		* {
+			margin:     0;
+			padding:    0;
+			box-sizing: border-box;
+		  }	
+		
+        body {
+				font-family:         Liberation, sans-serif;
+				background-color:    #1a1818;
+				width:               100vw;
+				height:              100vh;
+				display:             flex;
+				flex-direction:      column;
+				justify-content:     center;
+				align-items:         center;
+                background-image:    url('./Imagenes/Fondo.png');
+				background-size:     cover;
+				background-position: center;
+				background-repeat:   no-repeat;		
+            }
+
+        .container {
+				     flex-direction:      column;
+				     justify-content:     center;
+                   }
+		
+        .text-box {
+                    font-size:     24px;
+                    font-family:   Liberation, sans-serif;
+                    font-weight:   bold;
+                    font-style:    italic;
+                    color:         white;
+                    padding:       10px;
+                    border-radius: 5px;
+                    background-color: #6482AD80;
+                  }
+
+        .progress-bar-container {
+                                    width:            100%;
+                                    background-color: grey;
+                                    border-radius:    5px;
+                                    margin-top:       20px;
+                                    height:           20px;
+                                    overflow:         hidden;
+                                }
+
+        .progress-bar {
+                        height:            100%;
+                        width:             0;
+                        background-color:  lightblue;
+                        transition:        width 10s linear;
+                      }
+		
+		.boton {
+                width:            150px; /* Ancho del botón */
+                height:           40px; /* Alto del botón */
+                padding:          10px 10px; /* Espaciado interno */
+                font-family:      Liberation, sans-serif;
+                font-size:        20px; /* Tamaño de la fuente */
+                font-style:       italic;
+                background-color: #2196F3; /* Color de fondo */
+                color:            white; /* Color del texto */
+                border:           none; /* Sin borde */
+                border-radius:    8px; /* Bordes redondeados */
+                cursor:           pointer; /* Cursor de puntero al pasar sobre el botón */		
+                flex-direction:   column;
+                justify-content:  center;
+		       }
+
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div id="textBox" class="text-box">Challenger encriptador</div>
+        <div class="progress-bar-container">
+            <div id="progressBar" class="progress-bar"></div>
+        </div>
+    </div>
+
+    <div>
+        <button class="boton" id="startButton" style="display: none;" onclick="goToWelcomePage()">Iniciar</button>
+    </div>
+
+    <script>
+        function getRandomLetter() {
+            const letters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+            return letters.charAt(Math.floor(Math.random() * letters.length));
+        }
+
+        function encryptText() {
+            const textBox = document.getElementById('textBox');
+            let text = textBox.textContent.split('');
+            const interval = 500;
+            let index = 0;
+
+            function replaceNextCharacter() {
+                if (index < text.length) {
+                    text[index] = getRandomLetter();
+                    textBox.textContent = text.join('');
+                    index++;
+                    setTimeout(replaceNextCharacter, interval);
+                } else {
+                    document.getElementById('startButton').style.display = 'block';
+					ocultarTexto("textBox");
+                }
+            }
+
+            setTimeout(replaceNextCharacter, 1000);  // Start after 3 seconds
+            document.getElementById('progressBar').style.width = '100%';
+        }
+
+        function goToWelcomePage() {
+            window.location.href = 'Encriptar.html';
+        }
+
+		function ocultarTexto(id) {
+					var elemento = document.getElementById(id);
+					if (elemento.style.display === "none") {
+						elemento.style.display = "block"; // Mostrar el elemento
+					} else {
+						elemento.style.display = "none"; // Ocultar el elemento
+					}
+				}
+
+        window.onload = encryptText;
+    </script>
+</body>
+
+</html>
